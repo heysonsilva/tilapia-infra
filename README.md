@@ -25,8 +25,19 @@ ISP-Infra/
 ├── proxy/
 │   └── nginx/               # Configurações do Nginx
 ├── docs/
-│   ├── planejamento.md      # Planejamento da Sprint
-│   └── ata-reuniao1.md      # Ata da reunião inicial
+│   ├── cronograma.md        # Visão geral das 4 sprints
+│   ├── sprint1/
+│   │   ├── planejamento.md  # Planejamento da Sprint 1
+│   │   └── ata.md           # Ata da reunião 1
+│   ├── sprint2/
+│   │   ├── planejamento.md  # Planejamento da Sprint 2
+│   │   └── ata.md           # Ata da reunião 2
+│   ├── sprint3/
+│   │   ├── planejamento.md  # Planejamento da Sprint 3
+│   │   └── ata.md           # Ata da reunião 3
+│   └── sprint4/
+│       ├── planejamento.md  # Planejamento da Sprint 4
+│       └── ata.md           # Ata da reunião 4
 ├── .env                     # Variáveis de ambiente compartilhadas
 ├── docker-compose.yml       # Definição dos serviços e redes Docker
 └── README.md                # Este arquivo
@@ -75,7 +86,7 @@ ISP-Infra/
 * **dns/**: Ajuste as configurações de zona em `bind9-config/`.
 * **mail/**: Configure domínios e certificados em `postfix/` e `dovecot/`.
 * **proxy/**: Edite `nginx/` para adicionar novos hosts e certificados.
-* **docs/**: Mantenha o planejamento e atas de reunião atualizados.
+* **docs/**: Mantenha o `cronograma.md` e os diretórios `sprintN/` atualizados com planejamento e atas.
 
 ## 📄 Licença
 
