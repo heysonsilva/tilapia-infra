@@ -22,7 +22,7 @@ ISP-Infra/
 ├── webmail/              # Interface Webmail
 ├── clients/              # Microsserviços dos clientes
 ├── docs/                 # Documentação por sprint e cronograma
-├── .env                  # Variáveis de ambiente
+├── .env.example                  # Variáveis de ambiente
 └── docker-compose.yml    # Serviços do provedor
 ```
 
