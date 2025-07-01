@@ -1,0 +1,17 @@
+$TTL    604800
+@       IN      SOA     isp.local. root.isp.local. (
+                             2         ; Serial
+                        604800         ; Refresh
+                         86400         ; Retry
+                       2419200         ; Expire
+                        604800 )       ; Negative Cache TTL
+
+; Nameservers
+@       IN      NS      dns.isp.local.
+
+; Hosts
+dns     IN      A       192.168.0.2
+mail    IN      A       192.168.0.3
+portal  IN      A       192.168.0.4
+webmail IN      A       192.168.0.5
+proxy   IN      A       192.168.0.6

@@ -1,12 +1,20 @@
+networks:
+  ${NETWORK_NAME}:
+    driver: bridge
+
 services:
   # DNS 
   dns:
     container_name: ${DNS_CONTAINER_NAME}
+    build:
+      context: ./DNS
+      dockerfile: Dockerfile
     networks:
     - ${NETWORK_NAME}
+    ipv4_address: ${DNS_IPADDRESS}
     ports:
       - "53:53/udp"
       - "53:53/tcp"
     volumes:
-      - ./dns_config:/etc/bind
+      - ./bind9_config:/etc/bind
     restart: always

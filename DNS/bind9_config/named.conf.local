@@ -1,0 +1,13 @@
+// Definição de zonas DNS
+
+// Zona direta (nome -> IP)
+zone "isp.local" {
+    type master;
+    file "/etc/bind/db.isp.local";
+};
+
+// Zona reversa (IP -> nome)
+zone "0.168.192.in-addr.arpa" {
+    type master;
+    file "/etc/bind/db.0.168.192.in-addr.arpa";
+};
