@@ -1,8 +1,9 @@
 services:
+  # DNS 
   dns:
-    image: ubuntu:latest
-    command: apt-get update && apt-get install -y bind9 && service bind9 start
-    container_name: dns_server
+    container_name: ${DNS_CONTAINER_NAME}
+    networks:
+    - ${NETWORK_NAME}
     ports:
       - "53:53/udp"
       - "53:53/tcp"
