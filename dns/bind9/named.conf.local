@@ -1,11 +1,15 @@
-// named.conf.local - Define as zonas do DNS local
+//
+// Do any local configuration here
+//
 
-zone "isp.local" {
+zone "asa.br"{
     type master;
-    file "/etc/bind/zones/db.isp.local";
+    file "/etc/bind/db.asa.br";
+    allow-transfer {
+        127.0.0.1;
+    };
 };
 
-zone "0.168.192.in-addr.arpa" {
-    type master;
-    file "/etc/bind/zones/db.0.168.192.in-addr.arpa";
-};
+// Consider adding the 1918 zones here, if they are not used in your
+// organization
+//include "/etc/bind/zones.rfc1918";
