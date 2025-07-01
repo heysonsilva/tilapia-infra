@@ -4,7 +4,7 @@ Este repositório contém a implementação da infraestrutura de provedor de ser
 
 ## 📝 Descrição
 
-O objetivo deste projeto é desenvolver, testar e documentar uma infraestrutura modular e isolada para um provedor de internet, que ofereça os seguintes serviços:
+O objetivo deste projeto é desenvolver, testar e documentar uma infraestrutura modular e isolada para um provedor de internet e seus clientes, que ofereça os seguintes serviços:
 
 * **DNS**: Bind9 atendendo solicitações em TCP/UDP na porta 53.
 * **E-mail**: Postfix (SMTP) e Dovecot (IMAP/POP3) com suporte a STARTTLS.
@@ -17,19 +17,35 @@ O projeto é dividido em 4 sprints ao longo de 8 semanas, seguindo metodologia S
 
 ```
 ISP-Infra/
-├── dns/
-│   └── bind9-config/        # Configurações do Bind9 (zonas, named.conf)
-├── mail/
-│   ├── postfix/             # Configurações e dados do Postfix
-│   └── dovecot/             # Configurações e dados do Dovecot
-├── proxy/
-│   └── nginx/               # Configurações do Nginx
-├── docs/
-│   ├── planejamento.md      # Planejamento da Sprint
-│   └── ata-reuniao1.md      # Ata da reunião inicial
-├── .env                     # Variáveis de ambiente compartilhadas
-├── docker-compose.yml       # Definição dos serviços e redes Docker
-└── README.md                # Este arquivo
+├── dns/                        # Configurações do Bind9 (zonas, named.conf)
+├── mail/                       # Configurações do Postfix e Dovecot
+│   ├── postfix/
+│   └── dovecot/
+├── proxy/                      # Configurações do Nginx ou outro proxy reverso
+│   └── nginx/
+├── clients/                    # Microsserviços dos clientes
+│   ├── cliente1/
+│   │   ├── docker-compose.yml  # Serviços e configurações do cliente 1
+│   │   └── configs/
+│   ├── cliente2/
+│   └── cliente3/
+├── docs/                       # Documentação organizada por sprint
+│   ├── cronograma.md           # Visão geral das 4 sprints
+│   ├── sprint1/
+│   │   ├── planejamento.md      # Planejamento da Sprint 1
+│   │   └── ata.md               # Ata da reunião 1
+│   ├── sprint2/
+│   │   ├── planejamento.md      # Planejamento da Sprint 2
+│   │   └── ata.md               # Ata da reunião 2
+│   ├── sprint3/
+│   │   ├── planejamento.md      # Planejamento da Sprint 3
+│   │   └── ata.md               # Ata da reunião 3
+│   └── sprint4/
+│       ├── planejamento.md      # Planejamento da Sprint 4
+│       └── ata.md               # Ata da reunião 4
+├── .env                        # Variáveis de ambiente compartilhadas
+├── docker-compose.yml          # Definição dos serviços do provedor ISP
+└── README.md                   # Este arquivo
 ```
 
 ## 🚀 Começando
@@ -57,14 +73,20 @@ ISP-Infra/
 
    ```bash
    cp .env.example .env
-   # Edite .env com domínios e senhas
+   # Edite .env com domínios, IPs e senhas
    ```
-4. Suba os serviços:
+4. Suba o container do DNS:
 
    ```bash
+   docker-compose up -d dns
+   ```
+5. Configure e suba os serviços dos clientes (exemplo cliente1):
+
+   ```bash
+   cd clients/cliente1
    docker-compose up -d
    ```
-5. Verifique os logs para garantir que todos os containers iniciaram corretamente:
+6. Verifique os logs para garantir que todos os containers iniciaram corretamente:
 
    ```bash
    docker-compose logs -f
@@ -75,7 +97,8 @@ ISP-Infra/
 * **dns/**: Ajuste as configurações de zona em `bind9-config/`.
 * **mail/**: Configure domínios e certificados em `postfix/` e `dovecot/`.
 * **proxy/**: Edite `nginx/` para adicionar novos hosts e certificados.
-* **docs/**: Mantenha o planejamento e atas de reunião atualizados.
+* **clients/clienteN/**: Cada cliente com seu próprio `docker-compose.yml` e configurações.
+* **docs/**: Mantenha o `cronograma.md` e as pastas `sprintN/` atualizadas com planejamento e atas.
 
 ## 📄 Licença
 
