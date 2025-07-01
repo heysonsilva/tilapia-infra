@@ -56,7 +56,7 @@ ISP-Infra/
    ```
 
 ## Status dos Serviços
-- **DNS**: ✅
+- **DNS**: 🚧
 - **E-mail**: 🚧
 - **Proxy**: 🚧
 - **Portal**: 🚧
