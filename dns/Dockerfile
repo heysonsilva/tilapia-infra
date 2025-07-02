@@ -9,13 +9,12 @@ RUN mkdir -p /run/named
 RUN chown bind:bind /var/cache/bind
 RUN chown bind:bind /run/named
 
-COPY named.conf.local /etc/bind/
-COPY db.asa.br /etc/bind/
+COPY ./bind9 /etc/bind/
 
 RUN chown bind:bind /etc/bind/named.conf.local
-RUN chown bind:bind /etc/bind/db.asa.br
+RUN chown bind:bind /etc/bind/db.asa.isp
 RUN chmod 644 /etc/bind/named.conf.local
-RUN chmod 644 /etc/bind/db.asa.br
+RUN chmod 644 /etc/bind/db.asa.isp
 
 EXPOSE 53/tcp
 EXPOSE 53/udp

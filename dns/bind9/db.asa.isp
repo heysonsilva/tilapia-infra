@@ -1,8 +1,8 @@
 ;
-; BIND data file for asa.br zone
+; BIND data file for asa.isp zone
 ;
 $TTL	604800
-@	IN	SOA	ns.asa.br. root.asa.br. (
+@	IN	SOA	ns.asa.isp. root.asa.isp. (
 			      1		; Serial
 			 604800		; Refresh
 			  86400		; Retry
