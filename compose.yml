@@ -11,7 +11,7 @@ networks:
 services:
   dns:
     build: 
-      context: ./Dns
+      context: ./DNS
       dockerfile: Dockerfile
     container_name: DNS
     ports:
@@ -23,7 +23,7 @@ services:
 
   postfix:
     build: 
-      context: ./mail
+      context: ./mail/postfix
       dockerfile: Dockerfile
     container_name: postfix
     ports:
