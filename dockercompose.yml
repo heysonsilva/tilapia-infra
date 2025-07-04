@@ -1,6 +1,6 @@
 services:
   include:
     - ./DNS/docker-compose.dns.yml
-    - ./MAIL/docker-compose.mail.yml
-    - ./PORTAL/docker-compose.portal.yml
+    - ./Email/docker-compose.mail.yml
+    - ./Portal/docker-compose.portal.yml
     - ./Proxy/docker-compose.portal.yml
