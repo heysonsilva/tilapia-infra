@@ -28,6 +28,7 @@ RUN chmod +x /entrypoint.sh
 RUN useradd -m testuser
 RUN echo "123" | passwd --stdin testuser || true
 
-EXPOSE 25 143
+EXPOSE 25
+EXPOSE 143
 
 CMD ["/entrypoint.sh"]
