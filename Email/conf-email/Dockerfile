@@ -30,4 +30,7 @@ RUN echo "testuser:testpass" | chpasswd
 RUN mkdir -p /home/testuser/Maildir/{cur,new,tmp}
 RUN chown -R testuser:mail /home/testuser/Maildir
 
+EXPOSE 25
+EXPOSE 143
+
 CMD ["/entrypoint.sh"]
