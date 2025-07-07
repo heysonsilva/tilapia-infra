@@ -1,0 +1,12 @@
+services:
+   portal:
+    container_name: Portal
+    build:
+      context: ./conf-portal
+      dockerfile: Dockerfile
+    networks:
+       isp_network:
+          ipv4_address: 172.25.0.3
+    ports:
+      - "80:80"
+    restart: always
