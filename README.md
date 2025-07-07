@@ -37,12 +37,7 @@ ISP-Infra/
    git clone https://github.com/seu_usuario/ISP-Infra.git
    cd ISP-Infra
    ```
-3. **Configurar ambiente**
-   ```bash
-   cp .env.example .env
-   # Ajuste domínios e IPs em .env
-   ```
-4. **Criar rede Docker**
+3. **Criar rede Docker (opcional)**
    ```bash
    docker network create isp_net
    ```
@@ -56,14 +51,11 @@ ISP-Infra/
    ```
 
 ## Status dos Serviços
-- **DNS**: 🚧
-- **E-mail**: 🚧
-- **Proxy**: 🚧
-- **Portal**: 🚧
-- **Webmail**: 🚧
-
-## Contribuição
-Siga o fluxo de issues, usando labels e o Kanban para gerenciar as sprints.
+- **DNS**: ✅
+- **E-mail**: ✅
+- **Proxy**: ✅
+- **Portal**: ✅
+- **Webmail**: ✅
 
 ---
 *Este README será atualizado conforme o projeto avança.*
