@@ -26,10 +26,10 @@
 | ------------------------------------------------ | ----------- | ------------ |
 | Criar estrutura de repositório                   | Heyson      | Concluído    |
 | Configurar servidor DNS (Bind9)                  | Heyson      | Concluído    |
-| Estruturar serviço de e-mail (Postfix + Dovecot) | Júlio      | Não inciada  |
-| Configurar proxy reverso (Apache)                | Magno      | Não iniciada |
-| Criar página do portal                           | Heyson      | Não iniciada |
-| Configurar webmail (Roundcube/RainLoop)          | Júlio     | Não iniciada |
+| Estruturar serviço de e-mail (Postfix + Dovecot) | Júlio      | Concluido  |
+| Configurar proxy reverso (Apache)                | Magno      | Concluído |
+| Criar página do portal                           | Heyson      | Concluído |
+| Configurar webmail (Roundcube/RainLoop)          | Júlio     | Concluído |
 | Escrever planejamento e ata da sprint            | Heyson      | Concluído    |
 | Atualizar README e cronograma                    | Heyson      | Concluído    |
 
