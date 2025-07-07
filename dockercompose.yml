@@ -3,4 +3,4 @@ services:
     - ./DNS/docker-compose-dns.yml
     - ./Email/docker-compose-email.yml
     - ./Portal/docker-compose-portal.yml
-    - ./Proxy/docker-compose.portal.yml
+    - ./Proxy/docker-compose-proxy.yml
