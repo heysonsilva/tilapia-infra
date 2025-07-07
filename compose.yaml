@@ -12,4 +12,4 @@ include:
     - path: ./DNS/docker-compose-dns.yaml
 #    - path: ./Email/docker-compose-email.yaml
     - path: ./Portal/docker-compose-portal.yaml
-#    - path: ./Proxy/docker-compose-proxy.yaml
+    - path: ./Proxy/docker-compose-proxy.yaml

@@ -6,7 +6,5 @@ services:
       dockerfile: Dockerfile
     networks:
        isp_network:
-          ipv4_address: 172.25.0.3
-    ports:
-      - "80:80"
+          ipv4_address: 172.25.0.4
     restart: always
