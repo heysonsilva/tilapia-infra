@@ -25,7 +25,7 @@
 | Tarefa                                           | Responsável | Status       |
 | ------------------------------------------------ | ----------- | ------------ |
 | Criar estrutura de repositório                   | Heyson      | Concluído    |
-| Configurar servidor DNS (Bind9)                  | Heyson      | Concluído    |
+| Configurar servidor DNS (Bind9)                  | Julio      | Concluído    |
 | Estruturar serviço de e-mail (Postfix + Dovecot) | Júlio      | Concluido  |
 | Configurar proxy reverso (Apache)                | Magno      | Concluído |
 | Criar página do portal                           | Heyson      | Concluído |
