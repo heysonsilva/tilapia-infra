@@ -1,0 +1,9 @@
+services:
+  email:
+    build: 
+      context: ./conf-email
+      dockerfile: Dockerfile
+    container_name: Email
+    networks:
+      isp_network:
+        ipv4_address: 172.25.0.5
