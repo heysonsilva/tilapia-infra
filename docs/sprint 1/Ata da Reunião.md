@@ -4,8 +4,8 @@
 **Sprint:** 1 - Infraestrutura do Provedor
 **Participantes:**
 
-* Júlio (Líder da Sprint)
-* Heyson
+* Júlio 
+* Heyson (Líder da Sprint)
 * Magno
 
 ---
