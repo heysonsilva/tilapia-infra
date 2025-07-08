@@ -8,7 +8,8 @@ Este projeto acadêmico, para a disciplina Administração de Sistemas Abertos (
 - **DNS** (Bind9)
 - **Serviço de E-mail** (Postfix + Dovecot)
 - **Proxy Reverso** (Apache)
-- **Portal** estático e **Webmail** (Roundcube)
+- **Portal** estático (Nginx)
+- **Webmail** (Roundcube)
 
 O trabalho é organizado em 4 sprints ao longo de 8 semanas, seguindo Scrum e PMBoK.
 
