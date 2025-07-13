@@ -23,7 +23,6 @@ RUN chmod +x /entrypoint.sh
 RUN useradd -m testuser
 RUN echo "testuser:testpass" | chpasswd
 
-
 EXPOSE 25/tcp 143/tcp
 
 CMD ["/entrypoint.sh"]
