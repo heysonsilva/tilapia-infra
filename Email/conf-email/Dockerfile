@@ -1,14 +1,9 @@
-FROM debian:bullseye-slim
+FROM ubuntu:latest
 
-ENV DEBIAN_FRONTEND=noninteractive
+RUN apt update -y
+RUN apt upgrade -y
 
-RUN apt-get update
-RUN apt-get install -y \
-    postfix \
-    dovecot-core dovecot-imapd \
-    rsyslog \
-    bsd-mailx
-RUN apt-get clean
+RUN apt install postfix dovecot-imapd dovecot-pop3d telnet -y
 
 # Copia configs do Postfix
 COPY ./postfix/main.cf /etc/postfix/main.cf
@@ -17,7 +12,7 @@ COPY ./postfix/main.cf /etc/postfix/main.cf
 COPY ./postfix/mailname /etc/mailname
 
 # Copia configs do Dovecot
-COPY ./dovecot/ /etc/dovecot/
+COPY ./dovecot/* /etc/dovecot/conf.d
 
 # Copia o entrypoint
 COPY entrypoint.sh /entrypoint.sh
@@ -26,9 +21,9 @@ RUN chmod +x /entrypoint.sh
 
 # Cria usuário local
 RUN useradd -m testuser
-RUN echo "123" | passwd --stdin testuser || true
+RUN echo "testuser:testpass" | chpasswd
 
-EXPOSE 25
-EXPOSE 143
+
+EXPOSE 25/tcp 143/tcp
 
 CMD ["/entrypoint.sh"]

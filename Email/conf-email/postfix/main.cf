@@ -19,11 +19,17 @@ default_destination_concurrency_limit = 10
 # Número máximo de mensagens para cada destino
 default_destination_recipient_limit = 50
 
+smtpd_banner = asa smtp server
+biff = no
+readme_directory = no
+compatibility_level = 3.6
+smtpd_tls_security_level = none
+recipient_delimiter = +
 myhostname = mail.asa.isp
 myorigin = /etc/mailname
 mydestination = $myhostname, localhost.$mydomain, localhost
 relayhost =
-mynetworks = 127.0.0.0/8
+mynetworks = 127.0.0.0/8 10.0.0.0/8
 inet_interfaces = all
 inet_protocols = all
 
