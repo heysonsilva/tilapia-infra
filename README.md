@@ -38,15 +38,11 @@ ISP-Infra/
    git clone https://github.com/seu_usuario/ISP-Infra.git
    cd ISP-Infra
    ```
-3. **Criar rede Docker (opcional)**
-   ```bash
-   docker network create isp_net
-   ```
-5. **Subir serviços básicos**
+3. **Subir serviços básicos**
    ```bash
    docker-compose up -d dns mail proxy portal webmail
    ```
-6. **Verificar logs**
+4. **Verificar logs**
    ```bash
    docker-compose logs -f
    ```
