@@ -1,27 +1,22 @@
+;
 ; BIND data file for asa.isp zone
-
+;
 $TTL    604800
-@   IN  SOA ns.asa.isp. root.asa.isp. (
-        2025070901 ; Serial
-        604800
-        86400
-        2419200
-        604800 )
-
-; Nameserver
-@       IN  NS      ns.asa.isp.
-
-; Registros A
-@       IN  A       172.25.0.2
-ns      IN  A       172.25.0.2
-proxy   IN  A       172.25.0.3
-portal  IN  A       172.25.0.4
-mail    IN  A       172.25.0.5
-webmail IN  A       172.25.0.6
+@       IN      SOA     ns.asa.isp. root.asa.isp. (
+                              2       ; Serial (incremente após editar)
+                         604800       ; Refresh
+                          86400       ; Retry
+                        2419200       ; Expire
+                         604800 )     ; Negative Cache TTL
 
 
-; CNAMEs
-www     IN  CNAME   portal
+@       IN      NS      ns.asa.isp.
+@       IN      A       127.0.0.1
+ns      IN      A       127.0.0.1
+www     IN      A       127.0.0.1
 
-; Mail exchange
-@       IN  MX  10  mail.asa.isp.
+portal  IN      CNAME   www
+webmail IN      CNAME   www
+
+@       IN      MX  10  mail.asa.isp.
+mail    IN      A       127.0.0.1
