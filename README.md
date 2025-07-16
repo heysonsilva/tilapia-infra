@@ -47,12 +47,5 @@ ISP-Infra/
    docker-compose logs -f
    ```
 
-## Status dos Serviços
-- **DNS**: ✅
-- **E-mail**: ✅
-- **Proxy**: ✅
-- **Portal**: ✅
-- **Webmail**: ✅
-
 ---
 *Este README será atualizado conforme o projeto avança.*
