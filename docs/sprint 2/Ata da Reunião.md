@@ -1,6 +1,6 @@
 # 📝 Ata da Reunião - Sprint 2
 
-**Data da Reunião:** 2025-07-15
+**Data da Reunião:** 2025-07-14
 **Sprint:** 2 – Infraestrutura do Cliente 1
 **Participantes:**
 
