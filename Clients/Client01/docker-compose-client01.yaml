@@ -1,14 +1,84 @@
 networks:
-  client01_network:
+  cliente1_net:
     driver: bridge
     ipam:
       config:
-        - subnet: 192.168.0.0/24
-          gateway: 192.168.0.1
-    attachable: true
+        - subnet: 192.168.10.0/24
 
-incluide:
-  - path: ./Proxy/docker-compose-proxy.yaml
-  - path: ./Portal/docker-compose-portal.yaml
-  - path: ./Hotsite/docker-compose-hostsite.yaml
-  - path: ./Sign/docker-compose-sign.yaml
+services:
+  # ====== SIGN Service =======
+  db:
+    image: postgres:15-alpine
+    container_name: cliente1_sign_db
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    volumes:
+      - sign_postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER} -d ${DB_NAME}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      cliente1_net:
+        ipv4_address: 192.168.10.11
+
+  backend:
+    image: salesfilho/sign-api:latest
+    container_name: cliente1_sign-api
+    platform: linux/arm64
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_NAME: ${DB_NAME}
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      cliente1_net:
+        ipv4_address: 192.168.10.12
+
+  frontend:
+    image: salesfilho/sign-app:latest
+    container_name: cliente1_sign-app
+    platform: linux/arm64
+    environment:
+      API_BASE_URL: http://backend:8000/api
+    depends_on:
+      backend:
+        condition: service_healthy
+    networks:
+      cliente1_net:
+        ipv4_address: 192.168.10.13
+    expose:
+      - "80"
+
+
+# ====== Hotsite Service =======
+  hotsite:
+    container_name: cliente1_hotsite
+    build:
+      context: ./Hotsite
+      dockerfile: Dockerfile
+    ports:
+      - "8082:80"
+      - "8443:443"
+    networks:
+      cliente1_net:
+        ipv4_address: 192.168.10.14
+
+volumes:
+  sign_postgres_data:
+    driver: local
+
+    
+

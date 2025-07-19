@@ -9,8 +9,12 @@ networks:
     attachable: true
 
 include:
-    - path: ./DNS/docker-compose-dns.yaml
-    - path: ./Email/docker-compose-email.yaml
-    - path: ./Portal/docker-compose-portal.yaml
-    - path: ./Proxy/docker-compose-proxy.yaml
-    - path: ./Webmail/docker-compose-webmail.yaml
+      # Services do Provedor
+    # - path: ./DNS/docker-compose-dns.yaml
+    # - path: ./Email/docker-compose-email.yaml
+    # - path: ./Portal/docker-compose-portal.yaml
+    # - path: ./Proxy/docker-compose-proxy.yaml
+    # - path: ./Webmail/docker-compose-webmail.yaml
+
+     # Serviços dos Clientes
+    - path: ./Clients/Client01/docker-compose-client01.yaml
