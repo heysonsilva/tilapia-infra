@@ -1,0 +1,13 @@
+services:
+  proxy:
+    build: 
+      context: ./conf-proxy
+      dockerfile: Dockerfile
+    container_name: Proxy
+    ports:
+      - "80:80/tcp"
+    depends_on:
+      - portal
+    networks:
+      isp_network:
+        ipv4_address: 172.25.0.3
