@@ -1,0 +1,63 @@
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: cliente1_sign-db
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    volumes:
+      - sign_postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER} -d ${DB_NAME}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      cliente1_net:
+        ipv4_address: 192.168.10.11
+
+  backend:
+    image: salesfilho/sign-api:latest
+    container_name: cliente1_sign-api
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_NAME: ${DB_NAME}
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      cliente1_net:
+        ipv4_address: 192.168.10.12
+
+  frontend:
+    image: salesfilho/sign-app:latest
+    container_name: cliente1_sign-app
+    environment:
+      API_BASE_URL: http://backend:8000/api
+    depends_on:
+      backend:
+        condition: service_healthy
+    networks:
+      cliente1_net:
+        ipv4_address: 192.168.10.13
+    expose:
+      - "80"  # sem publicar para fora, só entre containers
+
+volumes:
+  sign_postgres_data:
+
+networks:
+  cliente1_net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.10.0/24
