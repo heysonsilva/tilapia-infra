@@ -1,31 +1,32 @@
 services:
+  ### Banco de Dados (PostgreSQL) ###
   db:
     image: postgres:15-alpine
-    container_name: cliente1_sign-db
+    container_name: sign-db
     environment:
       POSTGRES_USER: ${DB_USER}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
       POSTGRES_DB: ${DB_NAME}
     volumes:
-      - sign_postgres_data:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql/data
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U ${DB_USER} -d ${DB_NAME}"]
       interval: 5s
       timeout: 5s
       retries: 5
-    networks:
-      cliente1_net:
-        ipv4_address: 192.168.10.11
 
+  ### Backend/API ###
   backend:
     image: salesfilho/sign-api:latest
-    container_name: cliente1_sign-api
+    container_name: sign-api
     environment:
       DB_HOST: db
-      DB_PORT: 5432
+      DB_PORT: ${DB_PORT}
       DB_USER: ${DB_USER}
       DB_PASSWORD: ${DB_PASSWORD}
       DB_NAME: ${DB_NAME}
+    ports:
+      - "${BACKEND_PORT}:8000"
     depends_on:
       db:
         condition: service_healthy
@@ -34,30 +35,18 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
-    networks:
-      cliente1_net:
-        ipv4_address: 192.168.10.12
 
+  ### Frontend / App ###
   frontend:
     image: salesfilho/sign-app:latest
-    container_name: cliente1_sign-app
+    container_name: sign-app
     environment:
-      API_BASE_URL: http://backend:8000/api
+      API_BASE_URL: ${API_BASE_URL}
+    ports:
+      - "${FRONTEND_PORT}:80"
     depends_on:
       backend:
         condition: service_healthy
-    networks:
-      cliente1_net:
-        ipv4_address: 192.168.10.13
-    expose:
-      - "80"  # sem publicar para fora, só entre containers
 
 volumes:
-  sign_postgres_data:
-
-networks:
-  cliente1_net:
-    driver: bridge
-    ipam:
-      config:
-        - subnet: 192.168.10.0/24
+  postgres_data:
