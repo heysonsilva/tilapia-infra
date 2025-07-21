@@ -4,8 +4,10 @@ services:
       context: ./conf-proxy
       dockerfile: Dockerfile
     container_name: Proxy
+    volumes:
+      - ./conf-proxy/conf-apache/certs:/etc/apache2/certs:ro
     ports:
-      - "80:80/tcp"
+      - "443:443/tcp"
     depends_on:
       - portal
     networks:
